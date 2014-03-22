@@ -2,10 +2,6 @@ function Game(canvasID){
 	this.canvas = document.getElementById(canvasID);
 	this.ctx = this.canvas.getContext('2d');
 
-	// TODO: move to world render
-	this.ctx.fillStyle = '#0021A5';
-	this.ctx.fillRect(0, 0, 500, 500);
-
 	this.world = new World();
 	this.world.game = this;
 
@@ -20,8 +16,10 @@ Game.prototype.frame = function(time){
 	var delta = time - this.lastTime;
 	this.lastTime = time;
 	
-	this.world.update(delta);
-	//this.world.render(this.ctx);
+	var doRender = this.world.update(delta);
+	if(doRender){
+		this.world.render(this.ctx);
+	}
 
 	var game = this;
 	window.requestAnimationFrame(function(time){
