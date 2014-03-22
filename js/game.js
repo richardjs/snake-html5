@@ -2,7 +2,8 @@ function Game(canvasID){
 	this.canvas = document.getElementById(canvasID);
 	this.ctx = this.canvas.getContext('2d');
 
-	this.ctx.fillStyle = '#fff';
+	// TODO: move to world render
+	this.ctx.fillStyle = '#0021A5';
 	this.ctx.fillRect(0, 0, 500, 500);
 
 	this.world = new World();
