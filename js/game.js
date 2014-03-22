@@ -2,8 +2,14 @@ function Game(canvasID){
 	this.canvas = document.getElementById(canvasID);
 	this.ctx = this.canvas.getContext('2d');
 
-	this.world = new World();
-	this.world.game = this;
+	this.world = new World(this);
+	this.world.addEntity(
+		new Player(
+			this.world,
+			this.world.width/2 - 1,
+			this.world.height/2 - 1
+		)
+	);
 
 	this.lastTime = 0;
 	var game = this;
