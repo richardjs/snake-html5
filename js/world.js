@@ -3,8 +3,8 @@ function World(game){
 
 	this.entityGroups = {};
 
-	this.tickLength = 1000;
-	this.tickTimer = 1000;	
+	this.tickLength = 250;
+	this.tickTimer = this.tickLength;	
 
 	this.width = 50;
 	this.height = 50;
