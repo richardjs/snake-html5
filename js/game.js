@@ -7,7 +7,8 @@ function Game(canvasID){
 		new Player(
 			this.world,
 			this.world.width/2 - 1,
-			this.world.height/2 - 1
+			this.world.height/2 - 1,
+			'left'
 		)
 	);
 
