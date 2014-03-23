@@ -20,6 +20,7 @@ Segment.prototype.render = function(ctx){
 function Player(world, x, y, direction){
 	this.world = world;
 	this.direction = direction;
+	this.lastDirection = null;
 	this.segments = [
 		new Segment(world, x, y),
 		new Segment(world, x-1, y),
@@ -31,19 +32,27 @@ function Player(world, x, y, direction){
 		switch(event.keyCode){
 			case 39:
 			case 68:
-				player.direction = 'right';
+				if(player.lastDirection != 'left'){
+					player.direction = 'right';
+				}
 				break;
 			case 37:
 			case 65:
-				player.direction = 'left';
+				if(player.lastDirection != 'right'){
+					player.direction = 'left';
+				}
 				break;
 			case 40:
 			case 83:
-				player.direction = 'down';
+				if(player.lastDirection != 'up'){
+					player.direction = 'down';
+				}
 				break;
 			case 38:
 			case 87:
-				player.direction = 'up';
+				if(player.lastDirection != 'down'){
+					player.direction = 'up';
+				}
 				break;
 		}
 	});
@@ -83,6 +92,7 @@ Player.prototype.update = function(delta){
 			}
 			break;
 	}
+	this.lastDirection = this.direction;
 	this.segments.pop();
 	this.segments.unshift(
 		new Segment(this.world, nx, ny)
