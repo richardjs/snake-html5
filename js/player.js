@@ -25,6 +25,28 @@ function Player(world, x, y, direction){
 		new Segment(world, x-1, y),
 		new Segment(world, x-2, y)
 	];
+
+	var player = this;
+	document.addEventListener('keydown', function(event){
+		switch(event.keyCode){
+			case 39:
+			case 68:
+				player.direction = 'right';
+				break;
+			case 37:
+			case 65:
+				player.direction = 'left';
+				break;
+			case 40:
+			case 83:
+				player.direction = 'down';
+				break;
+			case 38:
+			case 87:
+				player.direction = 'up';
+				break;
+		}
+	});
 }
 
 Player.prototype.update = function(delta){
@@ -55,7 +77,7 @@ Player.prototype.update = function(delta){
 			break;
 		case 'up':
 			nx = x;
-			ny -= y - 1;
+			ny = y - 1;
 			if(ny == -1){
 				ny = this.world.height - 1;
 			}
