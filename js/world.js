@@ -13,6 +13,15 @@ function World(game){
 	this.pixelHeight = game.canvas.height;
 	this.unitWidth = this.pixelWidth / this.width;
 	this.unitHeight = this.pixelHeight / this.height;
+
+	this.addEntity(
+		new Player(
+			this,
+			this.width/2 - 1,
+			this.height/2 - 1,
+			'right'
+		)
+	);
 }
 
 World.prototype.addEntity = function(entity, group){
