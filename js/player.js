@@ -1,3 +1,4 @@
+'use strict';
 function Segment(world, x, y){
 	this.world = world;
 	this.x = x;
