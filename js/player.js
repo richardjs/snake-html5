@@ -66,14 +66,14 @@ Player.prototype.update = function(delta){
 	switch(this.direction){
 		case 'right':
 			nx = x + 1;
-			if(nx == this.world.width){
+			if(nx === this.world.width){
 				nx = 0;
 			}
 			ny = y;
 			break;
 		case 'left':
 			nx = x - 1;
-			if(nx == -1){
+			if(nx === -1){
 				nx = this.world.width - 1;
 			}
 			ny = y;
@@ -81,14 +81,14 @@ Player.prototype.update = function(delta){
 		case 'down':
 			nx = x;
 			ny = y + 1;
-			if(ny == this.world.width){
+			if(ny === this.world.width){
 				ny = 0;
 			}
 			break;
 		case 'up':
 			nx = x;
 			ny = y - 1;
-			if(ny == -1){
+			if(ny === -1){
 				ny = this.world.height - 1;
 			}
 			break;
