@@ -93,8 +93,22 @@ Player.prototype.update = function(delta){
 			}
 			break;
 	}
+
+	var eating = false;
+	for(var i=0; i < this.world.entityGroups['food'].length; i++){
+		var food = this.world.entityGroups['food'][i];
+		if(food.x === nx && food.y == ny){
+			eating = true;
+			this.world.entityGroups['food'].splice(i, 1);
+			this.world.dropFood();
+			break;
+		}
+	}
+	
 	this.lastDirection = this.direction;
-	this.segments.pop();
+	if(!eating){
+		this.segments.pop();
+	}
 	this.segments.unshift(
 		new Segment(this.world, nx, ny)
 	);
@@ -110,7 +124,7 @@ Player.prototype.contains = function(x, y){
 	var segment;
 	for(var i = 0; i < this.segments.length; i++){
 		segment = this.segments[i];
-		if(segment.x == x && segment.y == y){
+		if(segment.x === x && segment.y === y){
 			return true;
 		}
 	}
