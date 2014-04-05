@@ -4,7 +4,7 @@ function World(game){
 
 	this.entityGroups = {};
 
-	this.tickLength = 250;
+	this.tickLength = 100;
 	this.tickTimer = this.tickLength;	
 
 	this.width = 50;
