@@ -3,6 +3,7 @@ body{
 }
 
 canvas{
+	border: 1px solid #0021a5;
 	display: block;
 	margin: 25px auto;
 }

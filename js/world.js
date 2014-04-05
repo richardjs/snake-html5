@@ -60,7 +60,7 @@ World.prototype.update = function(delta){
 }
 
 World.prototype.render = function(ctx){
-	ctx.fillStyle = '#0021a5';
+	ctx.fillStyle = '#000';
 	ctx.fillRect(0, 0, 500, 500);
 
 	for(var group in this.entityGroups){

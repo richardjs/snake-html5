@@ -10,7 +10,7 @@ Segment.prototype.render = function(ctx){
 	var pixelTop = this.y * this.world.unitHeight;
 	
 	if(!this.world.player.dead){
-		ctx.fillStyle = '#ff4a00';
+		ctx.fillStyle = '#fff';
 	}else{
 		ctx.fillStyle = '#900';
 	}
