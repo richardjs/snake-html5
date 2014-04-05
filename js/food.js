@@ -1,5 +1,4 @@
 'use strict';
-
 function Food(world, x, y){
 	this.world = world;
 	this.x = x;
