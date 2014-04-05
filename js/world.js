@@ -14,14 +14,15 @@ function World(game){
 	this.unitWidth = this.pixelWidth / this.width;
 	this.unitHeight = this.pixelHeight / this.height;
 
-	this.addEntity(
-		new Player(
-			this,
-			this.width/2 - 1,
-			this.height/2 - 1,
-			'right'
-		)
+	this.player = new Player(
+		this,
+		this.width/2 - 1,
+		this.height/2 - 1,
+		'right'
 	);
+	this.addEntity(this.player);
+
+	this.dropFood();
 }
 
 World.prototype.addEntity = function(entity, group){
@@ -29,6 +30,16 @@ World.prototype.addEntity = function(entity, group){
 		this.entityGroups[group] = [];
 	}
 	this.entityGroups[group].push(entity);
+}
+
+World.prototype.dropFood = function(){
+	var x;
+	var y;
+	do{
+		x = Math.floor(Math.random() * this.width);
+		y = Math.floor(Math.random() * this.height);
+	}while(this.player.contains(x, y));
+	this.addEntity(new Food(this, x, y), 'food');
 }
 
 World.prototype.update = function(delta){

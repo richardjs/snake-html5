@@ -105,3 +105,14 @@ Player.prototype.render = function(ctx){
 		this.segments[i].render(ctx);
 	}
 }
+
+Player.prototype.contains = function(x, y){
+	var segment;
+	for(var i = 0; i < this.segments.length; i++){
+		segment = this.segments[i];
+		if(segment.x == x && segment.y == y){
+			return true;
+		}
+	}
+	return false;
+}
