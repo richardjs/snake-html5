@@ -8,8 +8,12 @@ function Segment(world, x, y){
 Segment.prototype.render = function(ctx){
 	var pixelLeft = this.x * this.world.unitWidth;
 	var pixelTop = this.y * this.world.unitHeight;
-
-	ctx.fillStyle = '#ff4a00';
+	
+	if(!this.world.player.dead){
+		ctx.fillStyle = '#ff4a00';
+	}else{
+		ctx.fillStyle = '#900';
+	}
 	ctx.fillRect(
 		this.x * this.world.unitWidth,
 		this.y * this.world.unitHeight,
@@ -27,6 +31,7 @@ function Player(world, x, y, direction){
 		new Segment(world, x-1, y),
 		new Segment(world, x-2, y)
 	];
+	this.dead = false;
 
 	var player = this;
 	document.addEventListener('keydown', function(event){
@@ -60,6 +65,10 @@ function Player(world, x, y, direction){
 }
 
 Player.prototype.update = function(delta){
+	if(this.dead){
+		return;
+	}
+
 	var x = this.segments[0].x;
 	var y = this.segments[0].y;
 	var nx, ny;
@@ -92,6 +101,11 @@ Player.prototype.update = function(delta){
 				ny = this.world.height - 1;
 			}
 			break;
+	}
+	
+	if(this.contains(nx, ny)){
+		this.dead = true;
+		return;
 	}
 
 	var eating = false;
