@@ -102,6 +102,16 @@ Player.prototype.update = function(delta){
 			}
 			break;
 	}
+
+	this.world.entityGroups['wormholes'].forEach(function(wormhole){
+		if(nx == wormhole.x1 && ny == wormhole.y1){
+			nx = wormhole.x2;
+			ny = wormhole.y2;
+		}else if(nx == wormhole.x2 && ny == wormhole.y2){
+			nx = wormhole.x1;
+			ny = wormhole.y1;
+		}
+	});
 	
 	if(this.contains(nx, ny)){
 		this.dead = true;
@@ -115,6 +125,7 @@ Player.prototype.update = function(delta){
 			eating = true;
 			this.world.entityGroups['food'].splice(i, 1);
 			this.world.dropFood();
+			this.world.addEntity(new Wormhole(this.world), 'wormholes');
 			break;
 		}
 	}

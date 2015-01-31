@@ -2,7 +2,10 @@
 function World(game){
 	this.game = game;
 
-	this.entityGroups = {};
+	this.entityGroups = {
+		'wormholes': [],
+		'food': []
+	};
 
 	this.tickLength = 100;
 	this.tickTimer = this.tickLength;	
