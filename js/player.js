@@ -116,8 +116,11 @@ Player.prototype.update = function(delta){
 			eating = true;
 			this.world.entityGroups['food'].splice(i, 1);
 			this.world.dropFood();
-			this.world.addEntity(new Wormhole(this.world), 'wormholes');
 			this.world.game.score += 150;
+
+			if(Math.random() < .20){
+				this.world.addEntity(new Wormhole(this.world), 'wormholes');
+			}
 			break;
 		}
 	}
