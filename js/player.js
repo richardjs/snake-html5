@@ -60,6 +60,9 @@ function Player(world, x, y, direction){
 					player.direction = 'up';
 				}
 				break;
+			case 82:
+				player.world.game.newGame();
+				break;
 		}
 	});
 }

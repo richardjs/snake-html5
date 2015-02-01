@@ -9,7 +9,11 @@ canvas{
 	margin-bottom: 10px;
 }
 
-#score{
+#score, #bestScore{
 	color: #fff;
-	margin: 0px auto;
+}
+
+#instructions{
+	color: #ccc;
+	font-size: small;
 }
