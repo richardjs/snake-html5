@@ -103,6 +103,19 @@ Player.prototype.update = function(delta){
 			break;
 	}
 
+	var eating = false;
+	for(var i=0; i < this.world.entityGroups['food'].length; i++){
+		var food = this.world.entityGroups['food'][i];
+		if(food.x === nx && food.y == ny){
+			eating = true;
+			this.world.entityGroups['food'].splice(i, 1);
+			this.world.dropFood();
+			this.world.addEntity(new Wormhole(this.world), 'wormholes');
+			this.world.game.score += 150;
+			break;
+		}
+	}
+
 	this.world.entityGroups['wormholes'].forEach(function(wormhole){
 		if(nx == wormhole.x1 && ny == wormhole.y1){
 			nx = wormhole.x2;
@@ -116,18 +129,6 @@ Player.prototype.update = function(delta){
 	if(this.contains(nx, ny)){
 		this.dead = true;
 		return;
-	}
-
-	var eating = false;
-	for(var i=0; i < this.world.entityGroups['food'].length; i++){
-		var food = this.world.entityGroups['food'][i];
-		if(food.x === nx && food.y == ny){
-			eating = true;
-			this.world.entityGroups['food'].splice(i, 1);
-			this.world.dropFood();
-			this.world.addEntity(new Wormhole(this.world), 'wormholes');
-			break;
-		}
 	}
 	
 	this.lastDirection = this.direction;

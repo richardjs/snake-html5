@@ -57,6 +57,11 @@ World.prototype.update = function(delta){
 				entity.update(delta);
 			}
 		}
+
+		if(this.game.score && !this.player.dead){
+			this.game.score--;
+		}
+
 		ticked = true;
 	}
 	return ticked;

@@ -6,4 +6,10 @@ canvas{
 	border: 1px solid #0021a5;
 	display: block;
 	margin: 25px auto;
+	margin-bottom: 10px;
+}
+
+#score{
+	color: #fff;
+	margin: 0px auto;
 }
