@@ -13,7 +13,7 @@ Food.prototype.render = function(ctx){
 
 	if(this.blinkState){
 		ctx.fillStyle = '#0f0';
-	}else
+	}else{
 		ctx.fillStyle = '#070';
 	}
 	ctx.fillRect(
