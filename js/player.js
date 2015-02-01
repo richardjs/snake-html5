@@ -34,7 +34,7 @@ function Player(world, x, y, direction){
 	this.dead = false;
 
 	var player = this;
-	document.addEventListener('keydown', function(event){
+	var keyListener = function(event){
 		switch(event.keyCode){
 			case 39:
 			case 68:
@@ -61,10 +61,13 @@ function Player(world, x, y, direction){
 				}
 				break;
 			case 82:
+				document.removeEventListener('keydown', keyListener);
 				player.world.game.newGame();
 				break;
 		}
-	});
+	};
+
+	document.addEventListener('keydown', keyListener);
 }
 
 Player.prototype.update = function(delta){
