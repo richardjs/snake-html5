@@ -12,9 +12,9 @@ Food.prototype.render = function(ctx){
 	var pixelTop = this.y * this.world.unitHeight;
 
 	if(this.blinkState){
-		ctx.fillStyle = '#239741';
+		ctx.fillStyle = '#0f0';
 	}else{
-		ctx.fillStyle = '#43b761';
+		ctx.fillStyle = '#0b0';
 	}
 	ctx.fillRect(
 		this.x * this.world.unitWidth,
